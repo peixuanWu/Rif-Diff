@@ -1,8 +1,5 @@
 This is official Pytorch implementation of "Rif-Diff: Improving image fusion based on diffusion model via residual learning"
 
-## Framework
-The framework of the proposed Rif-Diff for improving image fusion based on diffusion model.
-
 ## Update
 #### 1. 2024.11.17: 
 We have released some code, and all the code will be released after the paper is received. Good luck to me!
