@@ -56,17 +56,17 @@ For infrared and visible image fusion, part1：ir image，part2：vis image.
 
 
 ### 4. model parameters
-All the parameters involved in the test are set up and you can use them directly
+All the parameters involved in the test are set up and you can use them directly.
 
-## To Train 
+## To train 
 ### 1.train dataset
-Download the train dataset from [**WHU-MFI dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MFF task, and put it in **./train_dataset/l/WHU-MFI**. 
+Download the training dataset from [**WHU-MFI dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MFF task, and put it in **./train_dataset/l/WHU-MFI**. 
 
-Download the train dataset from [**MEFB dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MEF task, and put it in **./train_dataset/MEFB/**.
+Download the training dataset from [**MEFB dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MEF task, and put it in **./train_dataset/MEFB/**.
 
-Download the train dataset from [**MSRS dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for IVF task, and put it in **./train_dataset/MSRS/**.
+Download the training dataset from [**MSRS dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for IVF task, and put it in **./train_dataset/MSRS/**.
 
-- Recommend：For multi-exposure image fusion, infrared and visible image fusion, we recommend that you use prior image fusion to make your own training dataset.
+- Recommend：For multi-exposure image fusion, infrared and visible image fusion, we recommend that you use image prior fusion to make your own training dataset.
 
 ### 2. Prepare your dataset
     train_dataset/
@@ -77,6 +77,7 @@ For multi-focus image fusion, part1：near-focus image，part2：far-focus image
 For multi-exposure image fusion, part1：low-exposure image，part2：over-exposure image.
 
 For infrared and visible image fusion, part1：ir image，part2：vis image.
+
 
 ## Citation
 
