@@ -1,4 +1,4 @@
-% image fuse prior£º
+% image fusion priorï¼š
 clear
 
 x1_suf = ".png"; 
@@ -8,12 +8,12 @@ f1_suf = x1_suf;
 f2_suf = x1_suf;
 f3_suf = x1_suf;
 
-x1_path = "C:\Users\ÎÒ±¾·ÉÑï\Desktop\¼¯ºÏ\test_img\ir_vis_MSRS\part1_three_channel"; % source image pairs
-x2_path = "C:\Users\ÎÒ±¾·ÉÑï\Desktop\¼¯ºÏ\test_img\ir_vis_MSRS\part2_initial";
+x1_path = "C:\Users\æˆ‘æœ¬é£æ‰¬\Desktop\é›†åˆ\test_img\ir_vis_MSRS\part1_three_channel"; % source image pairs
+x2_path = "C:\Users\æˆ‘æœ¬é£æ‰¬\Desktop\é›†åˆ\test_img\ir_vis_MSRS\part2_initial";
 
-f1_path = 'C:\Users\ÎÒ±¾·ÉÑï\Desktop\¼¯ºÏ\¸÷·½·¨²âÊÔ½á¹û\Diff-IF\ir_vis_MSRS\'; % iamge fuse prior 1
-f2_path = 'C:\Users\ÎÒ±¾·ÉÑï\Desktop\¼¯ºÏ\¸÷·½·¨²âÊÔ½á¹û\SwinFusion\ir_vis_MSRS\'; % iamge fuse prior 2
-f3_path = 'C:\Users\ÎÒ±¾·ÉÑï\Desktop\¼¯ºÏ\¸÷·½·¨²âÊÔ½á¹û\U2Fusion\ir_vis_MSRS\'; % iamge fuse prior 3
+f1_path = 'C:\Users\æˆ‘æœ¬é£æ‰¬\Desktop\é›†åˆ\å„æ–¹æ³•æµ‹è¯•ç»“æœ\Diff-IF\ir_vis_MSRS\'; % iamge fuse prior 1
+f2_path = 'C:\Users\æˆ‘æœ¬é£æ‰¬\Desktop\é›†åˆ\å„æ–¹æ³•æµ‹è¯•ç»“æœ\SwinFusion\ir_vis_MSRS\'; % iamge fuse prior 2
+f3_path = 'C:\Users\æˆ‘æœ¬é£æ‰¬\Desktop\é›†åˆ\å„æ–¹æ³•æµ‹è¯•ç»“æœ\U2Fusion\ir_vis_MSRS\'; % iamge fuse prior 3
 
 prior_path(1).name=f1_path;
 prior_path(2).name=f2_path;
@@ -45,18 +45,18 @@ metrics(4).name='FMI';
 metrics(5).name='Qabf';
 metrics(6).name='VIF';
 
-fuse_path = 'C:\Users\ÎÒ±¾·ÉÑï\Desktop\¼¯ºÏ\fusion_prior';
+fuse_path = 'C:\Users\æˆ‘æœ¬é£æ‰¬\Desktop\é›†åˆ\fusion_prior';
 record=zeros(1,20);
 for i = 1:img_num
     
-    fprintf('ÕıÔÚÕë¶Ô¸÷ÈÚºÏÏÈÑé´¦ÀíµÚ%d·ùÍ¼Ïñ....\n',i);
+    fprintf('æ­£åœ¨é’ˆå¯¹å„èåˆå…ˆéªŒå¤„ç†ç¬¬%då¹…å›¾åƒ....\n',i);
     
     x1 = imread(char(x1_path + "\" + string(x1_list(i).name)));
     x2 = imread(char(x2_path + "\" + string(x2_list(i).name)));
     
     for j= 1:prior_num  
        
-       fprintf('¼ÆËãµÚ%d¸öÈÚºÏÏÈÑéµÄÖ¸±ê¶ÈÁ¿...\n', j);       
+       fprintf('è®¡ç®—ç¬¬%dä¸ªèåˆå…ˆéªŒçš„æŒ‡æ ‡åº¦é‡...\n', j);       
        f_list = prior_list(:,j);
        fuse = imread(strcat(prior_path(j).name, f_list(i).name));  
        result = eval(x1,x2,fuse);
@@ -64,34 +64,34 @@ for i = 1:img_num
          
     end
     
-    fprintf('×¼±¸Êä³ö¸÷ÈÚºÏÏÈÑé¸÷Ö¸±ê¼°Ãû´Î,¸÷ÁĞÒÀ´ÎÊÇ£º\n  Diff-IF£¬SwinFsuion, U2Fusion...\n'); 
+    fprintf('å‡†å¤‡è¾“å‡ºå„èåˆå…ˆéªŒå„æŒ‡æ ‡åŠåæ¬¡,å„åˆ—ä¾æ¬¡æ˜¯ï¼š\n  Diff-IFï¼ŒSwinFsuion, U2Fusion...\n'); 
     
     for j= 1:metrics_num
-       fprintf('%s£º\n', metrics(j).name);
+       fprintf('%sï¼š\n', metrics(j).name);
        disp(table(j,:));
        table_result(j,:) = tiedrank(-table(j,:)); 
        disp(table_result(j,:));
     end
    
-    fprintf('ÈÚºÏÏÈÑéµÄ¸÷Ö¸±êÅÅĞò£º\n¸÷ÁĞÒÀ´ÎÊÇ£ºDiff-IF£¬SwinFsuion£¬U2Fusion\n¸÷ÁĞÒÀ´ÎÊÇ£ºSF£¬EN£¬SSIM£¬FMI, Qabf£¬VIF\n');
+    fprintf('èåˆå…ˆéªŒçš„å„æŒ‡æ ‡æ’åºï¼š\nå„åˆ—ä¾æ¬¡æ˜¯ï¼šDiff-IFï¼ŒSwinFsuionï¼ŒU2Fusion\nå„åˆ—ä¾æ¬¡æ˜¯ï¼šSFï¼ŒENï¼ŒSSIMï¼ŒFMI, Qabfï¼ŒVIF\n');
     disp(table_result); 
 
-    eval_result= sum(table_result); % µÃµ½¸÷·½·¨¸÷Ö¸±êµÄÃû´Î
-    fprintf('¸÷ÈÚºÏÏÈÑéµÄÃû´Î£º\n');
+    eval_result= sum(table_result); % å¾—åˆ°å„æ–¹æ³•å„æŒ‡æ ‡çš„åæ¬¡
+    fprintf('å„èåˆå…ˆéªŒçš„åæ¬¡ï¼š\n');
     disp(eval_result);
     
     [min_value, min_index] = min(eval_result);
-    fprintf('ÀÛ¼ÆµÄ×îĞ¡ÖµÊÇ: %d\n', min_value);
-    fprintf('×îĞ¡ÖµËùÔÚµÄÎ»ÖÃÊÇ: %d\n', min_index);
-    fprintf('ÏàÓ¦µÄÈÚºÏ·½·¨ÊÇ: %s \n', prior(min_index).name);
+    fprintf('ç´¯è®¡çš„æœ€å°å€¼æ˜¯: %d\n', min_value);
+    fprintf('æœ€å°å€¼æ‰€åœ¨çš„ä½ç½®æ˜¯: %d\n', min_index);
+    fprintf('ç›¸åº”çš„èåˆæ–¹æ³•æ˜¯: %s \n', prior(min_index).name);
     f_list = prior_list(:,min_index);   
     fuse = imread(strcat(prior_path(min_index).name, f_list(min_index).name));  
     imwrite(fuse, strcat(fuse_path, '\', f_list(min_index).name));
-    fprintf('Í¼Ïñ±£´æ³É¹¦\n\n\n');
+    fprintf('å›¾åƒä¿å­˜æˆåŠŸ\n\n\n');
     record(i)=min_index;  
 end
 
-fprintf('¸÷Í¼ÏñÀ´Ô´ÓÚÍ¼ÏñÈÚºÏÏÈÑé: %d\n', record);
+fprintf('å„å›¾åƒæ¥æºäºå›¾åƒèåˆå…ˆéªŒ: %d\n', record);
 
 function  result=eval(img1,img2,fused)
     
