@@ -1,4 +1,4 @@
-This is official Pytorch implementation of "Rif-Diff: Improving image fusion based on diffusion model via residual learning"
+This is official Pytorch implementation of "Rif-Diff: Improving image fusion based on diffusion model via residual prediction"
 
 ## Update
 #### 1. 2024.11.17: 
