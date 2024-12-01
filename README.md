@@ -2,7 +2,7 @@ This is official Pytorch implementation of "Rif-Diff: Improving image fusion bas
 
 ## Update
 #### 1. 2024.12.1: 
-We are sumbmitting this paper and have released some code, and all the code will be released after the paper is received. Good luck to me!
+We are sumbmitting this paper and have released some code. All the code will be released after the paper is received. Good luck to me!
 
 ## Environment
  - [x] python 3.8.10
