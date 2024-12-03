@@ -5,8 +5,7 @@ import cv2
 
 class MFDataset(data.Dataset):
     def __init__(self, root_path1, root_path2, transform, type="test"):
-        # 该方法主要用于生成三个列表，分别装载指定文件夹下所有图片的绝对路径/相对路径
-
+        
         self.transforms = transform
         self.type = type
 
@@ -45,8 +44,6 @@ class MFDataset(data.Dataset):
         return img_y
 
     def __getitem__(self, index):
-        # 该方法主要通过index来获取初始化方法中生成的列表中的数据(即图像路径)，
-        # 然后获取到指定的一对图像(源图像1、源图像2、清晰图像)，分别做预处理
 
         data1_1 = self.img_pt1_path[index]
         data1_2 = Image.open(data1_1)
@@ -66,8 +63,7 @@ class MFDataset(data.Dataset):
             return data1_4, data2_4, data3_4
         else:
 
-            # 方式一
-            # opencv读入的矩阵是BGR，转为RGB
+            # 
             # img_cv2(BGR) --> img_rgb(RGB)
 
             # data1_y_1 = cv2.imread(self.img_pt1_path[index])
@@ -82,7 +78,6 @@ class MFDataset(data.Dataset):
             # data2_y_4 = self.transforms(data2_y_3)
             # data2_y = self.normalize_to_neg_one_to_one(data2_y_4)
 
-            # 方式二：
             data1_1_y = self.img_pt1_path_y[index]
             data1_2_y = Image.open(data1_1_y)
             data1_3_y = self.transforms(data1_2_y)
