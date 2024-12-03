@@ -1,6 +1,17 @@
-% 图像融合先验：image fuse prior：
+% This is the official implementation for obtaining the optimal image fusion prior based on the metric ranking-method.
+% If you find our work useful for your research, please cite our paper.
+
+% First, you need to use some existing image fusion methods to test the training set and obtain fused images, which will serve as image fusion prior.
+% e.g. U2Fusion、SwinFusion、Diff-IF......
+
+% Second, you need to select some metrics to construct this evaluation function.
+% e.g. SF、EN、SSIM、FMI、Qabf、VIF......
+
+% Then, set up the relevant paths and relevant parameters, run the program, and obtain the optimal image fusion prior.
+
 clear
 
+% the type of images
 x1_suf = ".png";".png"; 
 x2_suf = x1_suf;
 
@@ -8,44 +19,49 @@ f1_suf = x1_suf;
 f2_suf = x1_suf;
 f3_suf = x1_suf;
 
-x1_path = "C:\Users\我本飞扬\Desktop\集合\test_img\ir_vis_MSRS\part1_ Three_channel"; % 源图像对"C:\Users\我本飞扬\Desktop\集合\test_img\ir_vis_MSRS\part1_three_channel"; % source image pairs
-x2_path = "C:\Users\我本飞扬\Desktop\集合\test_img\ir_vis_MSRS\part2_initial";"C:\Users\我本飞扬\Desktop\集合\test_img\ir_vis_MSRS\part2_initial";
+% the paths of sources images
+x1_path = "C:\Users\我本飞扬\Desktop\集合\test_img\MSRS\ir"; 
+% Note: the infrared image needs to be converted into a three-channel image in order to calculate metric with the three-channel visible image.
+x2_path = "C:\Users\我本飞扬\Desktop\集合\test_img\vis";
 
-f1_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\Diff-IF\ir_vis_MSRS\'; % 图像熔断先于 1
-f2_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\SwinFusion\ir_vis_MSRS\'; % 图像熔断前 2
-f3_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\U2Fusion\ir_vis_MSRS\'; % 图像熔断前 3
+% the path of image fusion prior 
+f1_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\Diff-IF\'; %1
+f2_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\SwinFusion\'; %2
+f3_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\U2Fusion\'; %3
 
-previous_path(1).name=f1_path;(1).name=f1_path;
-previous_path(2).name=f2_path;(2).name=f2_path;
-previous_path(3).name=f3_path;(3).name=f3_path;
+previous_path(1).name=f1_path;
+previous_path(2).name=f2_path;
+previous_path(3).name=f3_path;
 
-x1_list = dir(x1_path + "\*" + x1_suf);dir(x1_path + "\*" + x1_suf);
-x2_list = dir(x2_path + "\*" + x2_suf);dir(x2_path + "\*" + x2_suf);
+x1_list = dir(x1_path + "\*" + x1_suf);
+x2_list = dir(x2_path + "\*" + x2_suf);
 
-f1_list = dir(f1_path + "\*" + f1_suf);dir(f1_path + "\*" + f1_suf);
-f2_list = dir(f2_path + "\*" + f2_suf);dir(f2_path + "\*" + f2_suf);
-f3_list = dir(f3_path + "\*" + f3_suf);dir(f3_path + "\*" + f3_suf);
+f1_list = dir(f1_path + "\*" + f1_suf);
+f2_list = dir(f2_path + "\*" + f2_suf);
+f3_list = dir(f3_path + "\*" + f3_suf);
 
-Prior_list(:,1)=f1_list;(:,1)=f1_list;
-Prior_list(:,2)=f2_list;(:,2)=f2_list;
-Prior_list(:,3)=f3_list;(:,3)=f3_list;
+Prior_list(:,1)=f1_list;
+Prior_list(:,2)=f2_list;
+Prior_list(:,3)=f3_list;
 
-img_num = 大小(x1_list,1); % 图片编号size(x1_list,1); % image num
-先验数=3； % 先验数3;  % prior num
-指标数=6； % 指标数量6; % metrics num
+img_num = size(x1_list,1); 
 
-prior(1)先前(1).name='Diff-IF';name='Diff-IF'; 
-prior(2)先前(2).name='SwinFusion';name='SwinFusion'; 
-prior(3)先前(3).name='U2Fusion';name='U2Fusion'; 
+prior_num=3;  % the number of image fusion methods
+metrics_numme=6; % the number of metrics
 
-metrics(1)指标(1).name='SF';name='SF';
-metrics(2)指标(2).name='EN';name='EN';
-metrics(3)指标(3).name='SSIM';name='SSIM';
-metrics(4)指标(4).name='FMI';name='FMI';
-metrics(5)指标(5).name='Qabf';name='Qabf';
+prior(1).name='Diff-IF';
+prior(2).name='SwinFusion';
+prior(3).name='U2Fusion';
+
+metrics(1).name='SF';
+metrics(2).name='EN';
+metrics(3).name='SSIM';
+metrics(4).name='FMI';
+metrics(5).name='Qabf';
 metrics(6).name='VIF';
 
-fuse_path = 'C:\Users\我本飞扬\Desktop\集合\fusion_prior';
+% the path of optimal image fusion prior
+fuse_path = 'C:\Users\我本飞扬\Desktop\实验\fusion_prior';
 record=zeros(1,20);
 for i = 1:img_num
     
@@ -96,13 +112,12 @@ fprintf('各图像来源于图像融合先验: %d\n', record);
 function  result=eval(img1,img2,fused)
     
     SF= roundn(metrics_SF(img1, img2, fused),-4);
-    EN = roundn(metrics_EN(img1,img2,fused),-4);   EN = roundn(metrics_EN(img1,img2,fused),-4);   
-    SSIM = roundn(metrics_SSIM(img1,img2,fused),-4);SSIM = roundn(metrics_SSIM(img1,img2,fused),-4);
-    FMI = roundn(metrics_FMI(img1, img2, fused),-4);  FMI = roundn(metrics_FMI(img1, img2, fused),-4);  
-    Qabf = roundn(metrics_Qabf(img1, img2, fused),-4);Qabf = roundn(metrics_Qabf(img1, img2, fused),-4);
-    VIF = roundn((metrics_VIF(img1, fused) +metrics_VIF(img2, fused)),-4);VIF = roundn((metrics_VIF(img1, fused) + metrics_VIF(img2, fused)),-4);
-    结果=[SF;EN;SSIM;FMI;Qabf;VIF];result=[SF;EN;SSIM;FMI;Qabf;VIF];
+    EN = roundn(metrics_EN(img1,img2,fused),-4);   
+    SSIM = roundn(metrics_SSIM(img1,img2,fused),-4);
+    FMI = roundn(metrics_FMI(img1, img2, fused),-4);  
+    Qabf = roundn(metrics_Qabf(img1, img2, fused),-4);
+    VIF = roundn((metrics_VIF(img1, fused) + metrics_VIF(img2, fused)),-4);
+    result=[SF;EN;SSIM;FMI;Qabf;VIF];
 end
-
 
 
