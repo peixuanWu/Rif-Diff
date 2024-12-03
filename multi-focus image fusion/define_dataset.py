@@ -62,22 +62,6 @@ class MFDataset(data.Dataset):
             data3_4 = self.normalize_to_neg_one_to_one(data3_3)
             return data1_4, data2_4, data3_4
         else:
-
-            # 
-            # img_cv2(BGR) --> img_rgb(RGB)
-
-            # data1_y_1 = cv2.imread(self.img_pt1_path[index])
-            # data1_y_2 = cv2.cvtColor(data1_y_1, cv2.COLOR_BGR2RGB)
-            # data1_y_3 = self.rgb2y(data1_y_2)/255
-            # data1_y_4 = self.transforms(data1_y_3)
-            # data1_y = self.normalize_to_neg_one_to_one(data1_y_4)
-            #
-            # data2_y_1 = cv2.imread(self.img_pt2_path[index])
-            # data2_y_2 = cv2.cvtColor(data2_y_1, cv2.COLOR_BGR2RGB)
-            # data2_y_3 = self.rgb2y(data2_y_2)/255
-            # data2_y_4 = self.transforms(data2_y_3)
-            # data2_y = self.normalize_to_neg_one_to_one(data2_y_4)
-
             data1_1_y = self.img_pt1_path_y[index]
             data1_2_y = Image.open(data1_1_y)
             data1_3_y = self.transforms(data1_2_y)
