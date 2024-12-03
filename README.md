@@ -2,43 +2,30 @@ This is official Pytorch implementation of "Rif-Diff: Improving image fusion bas
 
 ## Update
 #### 1. 2024.12.1: 
-We are sumbmitting this paper and have released some code. All the code will be released after the paper is received. Good luck to me!
+We are submitting this paper and have released some code. All the code will be released after the paper is received. Good luck to me!
 
 ## Environment
  - [x] python 3.8.10
  - [x] torch 2.0.0
  - [x] torchvision 0.15.1
  - [x] numpy 1.24.2
+ 
+   ......
  - Recommend：The requirements for the environment in PyTorch are not strict and you can freely configure it according to your needs and circumstances.
-
-## Visual Comparison
-
-#### 1. For MFF task
-
-#### 2. For MEF task
-
-#### 3. For IVF task
 
 ## To test
 ### 1. Pretrain Weights
-We provide the pretrain weights for multi-focus image fusion、multi-exposure image fusion, and infrared and visible image fusion. Download the weights and put it into the corresponding folder.
+We provide the pretrain weights for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download the weights and put it into the corresponding folder.
 
-The pretrain weight for multi-focus image fusion is at [Baidu Drive](https://pan.baidu.com/s/14C7S3gImgB8BCecZxyb4jQ?pwd=jf16) (code: jf16).
-
-The pretrain weight for multi-exposure image fusion is at [Baidu Drive](https://pan.baidu.com/s/1_g0EnQwq6QP-8BVCA1anQA?pwd=7aq7) (code: 7aq7).
-
-The pretrain weight for infrared and visible image fusion is at  [Baidu Drive](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) (code: ep8v).
+The pretrain weight is at [Baidu Drive](https://pan.baidu.com/s/1my79LIUVnW2uwN8iAIU1PQ?pwd=zt4t) (code:zt4t).
 
 ### 2. Test dataset
-Download the test dataset from [**Lytro dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MFF task, and put it in **./test_img/lytro/**. 
+We provide the test dataset for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download and put them into the corresponding folders.
 
-Download the test dataset from [**MEFB dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MEF task, and put it in **./test_img/MEFB/**.
+The test dataset are at [Baidu Drive](https://pan.baidu.com/s/1hSLfkC5YurIQvi8yvqxX-w?pwd=hck4)(code:hck4). 
 
-Download the test dataset from [**TNO dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for IVF task, and put it in **./test_img/TNO/**.
-
-Download the test dataset from [**MSRS dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for IVF task, and put it in **./test_img/MSRS/**.
-
-- Recommend：You may employ the test dataset offered by us or utilize your own test dataset.
+- Recommend：You may utilize your own test dataset to test our model and perform comparison experiments.
+- Note：Our datasets are derived from the widely used public datasets, which has been cited in our paper.
 
 ### 3. Prepare your dataset
     test_img/
@@ -50,30 +37,27 @@ For multi-exposure image fusion, part1：low exposure image，part2：over expos
 
 For infrared and visible image fusion, part1：ir image，part2：vis image.
 
-
-
-### 4. model parameters
+### 4. Model parameters
 All the parameters involved in the test are set up and you can use them directly.
+
+### 5. Y channel
+For multi-exposure image fusion and infrared and visible image fusion, our model uses the Y channel of the YCbCr color space for fusion, while the Cb and Cr channels are fused in the traditional method.
 
 ## To train 
 ### 1.train dataset
-Download the training dataset from [**WHU-MFI dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MFF task, and put it in **./train_dataset/l/WHU-MFI**. 
+We provide the train datasets for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download and put them into the corresponding folders.
 
-Download the training dataset from [**MEFB dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for MEF task, and put it in **./train_dataset/MEFB/**.
+The train datasets are at [Baidu Drive](https://pan.baidu.com/s/1-xRZTi6x142EZOojRumawA?pwd=c4mg)(code:c4mg). 
 
-Download the training dataset from [**MSRS dataset**](https://pan.baidu.com/s/1XyRdu1ZXBvvKhmROjzmYdg?pwd=ep8v) for IVF task, and put it in **./train_dataset/MSRS/**.
+- Recommend：For fusion tasks lacking the ground truth, you may use the folder "image_fusion_prior" to make your own training dataset.
+- Note：Our datasets are derived from the widely used public datasets, which has been cited in our paper.
 
-- Recommend：For multi-exposure image fusion, infrared and visible image fusion, we recommend that you use image prior fusion to make your own training dataset.
+### 2. Model parameters
+Most of the parameters have already been pre-configured. The hyper-parameters involved in the training process can be set according to those specified in the paper, or adjusted freely based on your own needs.
 
-### 2. Prepare your dataset
-    train_dataset/
-           part1/
-           part2/
-For multi-focus image fusion, part1：near-focus image，part2：far-focus image.
 
-For multi-exposure image fusion, part1：low-exposure image，part2：over-exposure image.
-
-For infrared and visible image fusion, part1：ir image，part2：vis image.
+## Citation
+If you find our work useful for your research, please cite our paper.
 
 
 ## Citation
