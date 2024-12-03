@@ -20,7 +20,7 @@ f2_suf = x1_suf;
 f3_suf = x1_suf;
 
 % the paths of sources images
-x1_path = "C:\Users\我本飞扬\Desktop\集合\test_img\MSRS\ir"; 
+x1_path = "C:\Users\我本飞扬\Desktop\集合\test_img\ir"; 
 % Note: the infrared image needs to be converted into a three-channel image in order to calculate metric with the three-channel visible image.
 x2_path = "C:\Users\我本飞扬\Desktop\集合\test_img\vis";
 
@@ -29,9 +29,9 @@ f1_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\Diff-IF\';
 f2_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\SwinFusion\'; %2
 f3_path = 'C:\Users\我本飞扬\Desktop\集合\各方法测试结果\U2Fusion\'; %3
 
-previous_path(1).name=f1_path;
-previous_path(2).name=f2_path;
-previous_path(3).name=f3_path;
+prior_path(1).name=f1_path;
+prior_path(2).name=f2_path;
+prior_path(3).name=f3_path;
 
 x1_list = dir(x1_path + "\*" + x1_suf);
 x2_list = dir(x2_path + "\*" + x2_suf);
