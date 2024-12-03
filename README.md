@@ -15,12 +15,12 @@ We are submitting this paper and have released some code. All the code will be r
 
 ## To test
 ### 1. Pretrain Weights
-We provide the pretrain weights for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download the weights and put it into the corresponding folder.
+We provide the pretrain weights for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download the weights and put them into the corresponding folder.
 
-The pretrain weight is at [Baidu Drive](https://pan.baidu.com/s/1my79LIUVnW2uwN8iAIU1PQ?pwd=zt4t) (code:zt4t).
+The pretrain weights are at [Baidu Drive](https://pan.baidu.com/s/1my79LIUVnW2uwN8iAIU1PQ?pwd=zt4t) (code:zt4t).
 
 ### 2. Test dataset
-We provide the test dataset for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download and put them into the corresponding folders.
+We provide the test datasets for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download and put them into the corresponding folders.
 
 The test dataset are at [Baidu Drive](https://pan.baidu.com/s/1hSLfkC5YurIQvi8yvqxX-w?pwd=hck4)(code:hck4). 
 
