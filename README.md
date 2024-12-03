@@ -22,7 +22,7 @@ The pretrain weights are at [Baidu Drive](https://pan.baidu.com/s/1my79LIUVnW2uw
 ### 2. Test dataset
 We provide the test datasets for multi-focus image fusion, multi-exposure image fusion, and infrared and visible image fusion. Download and put them into the corresponding folders.
 
-The test dataset are at [Baidu Drive](https://pan.baidu.com/s/1hSLfkC5YurIQvi8yvqxX-w?pwd=hck4)(code:hck4). 
+The test datasets are at [Baidu Drive](https://pan.baidu.com/s/1hSLfkC5YurIQvi8yvqxX-w?pwd=hck4) (code:hck4). 
 
 - Recommend：You may utilize your own test dataset to test our model and perform comparison experiments.
 - Note：Our datasets are derived from the widely used public datasets, which has been cited in our paper.
