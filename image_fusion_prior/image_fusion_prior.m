@@ -12,7 +12,7 @@
 clear
 
 % the type of images
-x1_suf = ".png";".png"; 
+x1_suf = ".png";
 x2_suf = x1_suf;
 
 f1_suf = x1_suf;
