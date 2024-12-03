@@ -59,8 +59,3 @@ Most of the parameters have already been pre-configured. The hyper-parameters in
 ## Citation
 If you find our work useful for your research, please cite our paper.
 
-
-## Citation
-
-
-## Acknowledgement
