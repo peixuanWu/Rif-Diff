@@ -42,6 +42,7 @@ All the parameters involved in the test are set up and you can use them directly
 
 ### 5. Y channel
 For multi-exposure image fusion and infrared and visible image fusion, our model uses the Y channel of the YCbCr color space for fusion, while the Cb and Cr channels are fused in the traditional method.
+
 For multi-focus image fusion, we directly fuse RGB images, but the Y channel image is needed to construct the dual-step decision module.
 ## To train 
 ### 1.train dataset
